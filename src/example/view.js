@@ -9,8 +9,8 @@ import { RowsDiv, ColumnDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout
 import SubHeading from "./view/subHeading";
 import SizeableDiv from "./view/div/sizeable";
 import BNFTextarea from "./view/textarea/bnf";
-import MarkdownLexer from "./markdown/lexer";
-import MarkdownParser from "./markdown/parser";
+import MarkdownLexer from "../markdown/lexer";
+import MarkdownParser from "../markdown/parser";
 import ContentTextarea from "./view/textarea/content";
 import MarkdownSection from "./view/section/markdown";
 import ParseTreeTextarea from "./view/textarea/parseTree";

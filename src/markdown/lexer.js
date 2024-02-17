@@ -1,35 +1,23 @@
 "use strict";
 
-import { CommonLexer, WhitespaceToken, EndOfLineSignificantToken } from "occam-lexers";
+import { arrayUtilities } from "necessary";
+import { MarkdownLexer, tokenTpyes } from "highmark-grammar";
 
-import entries from "./entries";
+const { first } = arrayUtilities,
+      { entries } = MarkdownLexer,
+      { LISTING_TOKEN_TYPE } = tokenTpyes;
 
-export default class MarkdownLexer extends CommonLexer {
+entries.forEach((entry) => {
+  const keys = Object.keys(entry),
+        firstKey = first(keys),
+        tokenType = firstKey; ///
+
+  if (tokenType === LISTING_TOKEN_TYPE) {
+    entry[tokenType] = "^===";
+  }
+});
+
+export default class extends MarkdownLexer {
   static entries = entries;
-
-  static EndOfLineToken = EndOfLineSignificantToken;
-
-  static WhitespaceToken = WhitespaceToken;
-
-  static EndOfLineCommentToken = null;
-
-  static SingleLineCommentToken = null;
-
-  static RegularExpressionToken = null;
-
-  static EndOfMultiLineCommentToken = null;
-
-  static StartOfMultiLineCommentToken = null;
-
-  static MiddleOfMultiLineCommentToken = null;
-
-  static SinglyQuotedStringLiteralToken = null;
-
-  static DoublyQuotedStringLiteralToken = null;
-
-  static fromNothing() { return CommonLexer.fromNothing(MarkdownLexer); }
-
-  static fromRules(rules) { return CommonLexer.fromRules(MarkdownLexer, rules); }
-
-  static fromEntries(entries) { return CommonLexer.fromEntries(MarkdownLexer, entries); }
 }
+

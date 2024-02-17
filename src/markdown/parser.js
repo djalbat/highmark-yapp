@@ -1,38 +1,15 @@
 "use strict";
 
-import { CommonParser } from "occam-parsers";
+import { nodeMap, ruleNames, MarkdownParser } from "highmark-grammar";
 
-import bnf from "./bnf";
-import nodeMap from "../nodeMap";
+import YappListingMarkdownNode from "../node/markdown/yappListing";
 
-import { setNonTerminalNodes } from "../utilities/parser";
+const { LISTING_RULE_NAME } = ruleNames;
 
-export default class MarkdownParser extends CommonParser {
-  static bnf = bnf;
+Object.assign(nodeMap, {
+  [LISTING_RULE_NAME]: YappListingMarkdownNode
+});
 
+export default class extends MarkdownParser {
   static nodeMap = nodeMap;
-
-  static fromNothing() {
-    const markdownParser = CommonParser.fromNothing(MarkdownParser);
-
-    setNonTerminalNodes(markdownParser);
-
-    return markdownParser;
-  }
-
-  static fromBNF(bnf) {
-    const markdownParser = CommonParser.fromBNF(MarkdownParser, bnf);
-
-    setNonTerminalNodes(markdownParser);
-
-    return markdownParser;
-  }
-
-  static fromRules(rules) {
-    const markdownParser = CommonParser.fromRules(MarkdownParser, rules);
-
-    setNonTerminalNodes(markdownParser);
-
-    return markdownParser;
-  }
 }

@@ -1,8 +1,8 @@
 "use strict";
 
-import Listing from "../../view/listing";
+import { ListingMarkdownNode } from "highmark-grammar";
 
-import { ListingMarkdownNode } from "../../../index";
+import Listing from "../../listing";
 
 export default class YappListingMarkdownNode extends ListingMarkdownNode {
   createDOMElement(tokens) {

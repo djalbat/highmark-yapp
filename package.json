@@ -1,7 +1,7 @@
 {
   "name": "highmark-yapp",
   "author": "James Smith",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/highmark-uapp",
   "description": "Highmark with Yapp listings.",
@@ -10,9 +10,7 @@
     "url": "https://github.com/djalbat/highmark-uapp"
   },
   "dependencies": {
-    "occam-dom": "^3.1.91",
-    "occam-lexers": "^19.0.83",
-    "occam-parsers": "^19.1.5"
+    "highmark-grammar": "^0.0.18"
   },
   "devDependencies": {
     "@swc/core": "^1.2.50",
