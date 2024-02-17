@@ -68,6 +68,7 @@ export default withStyle(MarkdownSection)`
   height: 100%;
   border: 1px solid darkgrey;
   padding: 0.25rem;
+  position: absolute;
   
   
 `;
