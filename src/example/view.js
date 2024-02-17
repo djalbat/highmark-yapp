@@ -3,6 +3,7 @@
 import withStyle from "easy-with-style";  ///
 
 import { Element } from "easy";
+import { parserUtilities } frm
 import { rulesUtilities, parserUtilities } from "occam-parsers";
 import { RowsDiv, ColumnDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 
