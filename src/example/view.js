@@ -3,7 +3,7 @@
 import withStyle from "easy-with-style";  ///
 
 import { Element } from "easy";
-import { parserUtilities } frm
+import { nodeUtilities } from "highmark-grammar";
 import { rulesUtilities, parserUtilities } from "occam-parsers";
 import { RowsDiv, ColumnDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 
@@ -18,9 +18,8 @@ import ParseTreeTextarea from "./view/textarea/parseTree";
 import StartRuleNameInput from "./view/input/startRuleName";
 import LexicalEntriesTextarea from "./view/textarea/lexicalEntries";
 
-import { setNonTerminalNodes } from "../utilities/parser";
-
 const { rulesFromBNF } = parserUtilities,
+      { setNonTerminalNodes } = nodeUtilities,
       { ruleMapFromRules, startRuleFromRulesAndStartRuleName } = rulesUtilities;
 
 class View extends Element {

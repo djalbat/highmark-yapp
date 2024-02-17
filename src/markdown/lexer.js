@@ -1,11 +1,11 @@
 "use strict";
 
 import { arrayUtilities } from "necessary";
-import { MarkdownLexer, tokenTpyes } from "highmark-grammar";
+import { MarkdownLexer, tokenTypes } from "highmark-grammar";
 
 const { first } = arrayUtilities,
       { entries } = MarkdownLexer,
-      { LISTING_TOKEN_TYPE } = tokenTpyes;
+      { LISTING_TOKEN_TYPE } = tokenTypes;
 
 entries.forEach((entry) => {
   const keys = Object.keys(entry),
