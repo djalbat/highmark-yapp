@@ -6,16 +6,17 @@ import Listing from "../../listing";
 
 export default class YappListingMarkdownNode extends ListingMarkdownNode {
   createDOMElement(tokens) {
-    const language = this.getLanguage(),
+    const { Listing } = this.constructor,
+          language = this.getLanguage(),
           content = this.getContent(tokens),
-          yapp =
+          listing =
 
             <Listing language={language}>
               {content}
             </Listing>
 
           ,
-          domElement = yapp.getDOMElement();
+          domElement = listing.getDOMElement();
 
     this.setDOMElement(domElement);
 
@@ -25,15 +26,15 @@ export default class YappListingMarkdownNode extends ListingMarkdownNode {
   getYapp() {
     const domElement = this.getDOMElement(),
           element = domElement.__element__, ///
-          yapp = element; ///
+          listing = element; ///
 
-    return yapp;
+    return listing;
   }
 
   didMount() {
-    const yapp = this.getYapp();
+    const listing = this.getYapp();
 
-    yapp.didMount();
+    listing.didMount();
   }
 
   willUnmount() {
@@ -41,6 +42,8 @@ export default class YappListingMarkdownNode extends ListingMarkdownNode {
 
     yapp.willUnmount();
   }
+
+  static Listing = Listing;
 
   static fromRuleNameAndChildNodes(ruleName, childNodes) { return ListingMarkdownNode.fromRuleNameAndChildNodes(YappListingMarkdownNode, ruleName, childNodes); }
 

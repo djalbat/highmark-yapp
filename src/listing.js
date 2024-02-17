@@ -1,8 +1,11 @@
 "use strict";
 
 import Yapp from "yapp";
+import withStyle from "easy-with-style";
 
-export default class Listing extends Yapp {
+import { listingPadding } from "./styles";
+
+class Listing extends Yapp {
   static defaultProperties = {
     className: "listing",
     firaCode: true,
@@ -10,3 +13,10 @@ export default class Listing extends Yapp {
     hiddenScrollbars: true
   };
 }
+
+export default withStyle(Listing)`
+
+  border: 0;
+  padding: ${listingPadding};
+  
+`;

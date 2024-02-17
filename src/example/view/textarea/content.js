@@ -36,6 +36,6 @@ class ContentTextarea extends Textarea {
 
 export default withStyle(ContentTextarea)`
 
-  height: 24rem;
+  height: 64rem;
   
 `;
