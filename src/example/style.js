@@ -1,6 +1,13 @@
 "use strict";
 
+import { blockListingPadding } from "./styles";
+
 const style = `
+
+  .yapp {
+    border: 0;
+    padding: ${blockListingPadding};
+  }
 
   section.markdown {
     font-size: 2rem;
