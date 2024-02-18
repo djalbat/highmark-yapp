@@ -14,13 +14,10 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   createDOMElement(tokens) {
     const language = this.getLanguage(),
           content = this.getContent(tokens),
-          blockListing =
-
-            <BlockListing language={language}>
-              {content}
-            </BlockListing>
-
-          ,
+          options ={
+            language
+          },
+          blockListing = BlockListing.fromContentAndOptions(content, options),
           domElement = blockListing.getDOMElement();
 
     this.setDOMElement(domElement);
