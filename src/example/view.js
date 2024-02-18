@@ -66,11 +66,11 @@ class View extends Element {
   }
 
   static initialContent = `
-===javascript
+'''javascript
 export default function blah() {
   ///
 }
-===
+'''
 `;
 
   static tagName = "div";
