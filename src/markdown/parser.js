@@ -2,12 +2,12 @@
 
 import { nodeMap, ruleNames, MarkdownParser } from "highmark-grammar";
 
-import YappListingMarkdownNode from "../node/markdown/yappListing";
+import BlockListingMarkdownNode from "../node/markdown/blockListing";
 
-const { LISTING_RULE_NAME } = ruleNames;
+const { BLOCK_LISTING_RULE_NAME } = ruleNames;
 
 Object.assign(nodeMap, {
-  [LISTING_RULE_NAME]: YappListingMarkdownNode
+  [BLOCK_LISTING_RULE_NAME]: BlockListingMarkdownNode
 });
 
 export default class extends MarkdownParser {

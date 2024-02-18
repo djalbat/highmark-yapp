@@ -66,11 +66,11 @@ class View extends Element {
   }
 
   static initialContent = `
-export default withStyle(simpleApplication)\`
-
-  color: #333;
-
-\`;
+===javascript
+export default function blah() {
+  ///
+}
+===
 `;
 
   static tagName = "div";

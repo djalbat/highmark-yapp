@@ -1,3 +1,3 @@
 "use strict";
 
-export const listingPadding = "2rem";
+export const blockListingPadding = "2rem";

@@ -3,20 +3,19 @@
 import Yapp from "yapp";
 import withStyle from "easy-with-style";
 
-import { listingPadding } from "./styles";
+import { blockListingPadding } from "./styles";
 
-class Listing extends Yapp {
+class BlockListing extends Yapp {
   static defaultProperties = {
-    className: "listing",
     firaCode: true,
     hiddenGutter: true,
     hiddenScrollbars: true
   };
 }
 
-export default withStyle(Listing)`
+export default withStyle(BlockListing)`
 
   border: 0;
-  padding: ${listingPadding};
+  padding: ${blockListingPadding};
   
 `;

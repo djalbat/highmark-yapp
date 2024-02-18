@@ -5,14 +5,14 @@ import { MarkdownLexer, tokenTypes } from "highmark-grammar";
 
 const { first } = arrayUtilities,
       { entries } = MarkdownLexer,
-      { LISTING_TOKEN_TYPE } = tokenTypes;
+      { BLOCK_LISTING_TOKEN_TYPE } = tokenTypes;
 
 entries.forEach((entry) => {
   const keys = Object.keys(entry),
         firstKey = first(keys),
         tokenType = firstKey; ///
 
-  if (tokenType === LISTING_TOKEN_TYPE) {
+  if (tokenType === BLOCK_LISTING_TOKEN_TYPE) {
     entry[tokenType] = "^===";
   }
 });
