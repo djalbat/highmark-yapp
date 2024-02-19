@@ -10,7 +10,7 @@
     "url": "https://github.com/djalbat/highmark-uapp"
   },
   "dependencies": {
-    "highmark-grammar": "^0.0.27",
+    "highmark-grammars": "^0.0.28",
     "yapp": "^5.0.11"
   },
   "devDependencies": {

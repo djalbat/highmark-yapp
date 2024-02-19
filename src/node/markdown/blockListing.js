@@ -1,7 +1,7 @@
 "use strict";
 
 import { arrayUtilities } from "necessary";
-import { tokenUtilities, MarkdownNode } from "highmark-grammar";
+import { tokenUtilities, MarkdownNode } from "highmark-grammars";
 
 import BlockListing from "../../blockListing";
 

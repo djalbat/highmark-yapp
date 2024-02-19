@@ -1,7 +1,7 @@
 "use strict";
 
 import { arrayUtilities } from "necessary";
-import { MarkdownLexer, tokenTypes } from "highmark-grammar";
+import { MarkdownLexer, tokenTypes } from "highmark-grammars";
 
 const { first } = arrayUtilities,
       { entries } = MarkdownLexer,

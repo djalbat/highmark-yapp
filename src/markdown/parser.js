@@ -1,6 +1,6 @@
 "use strict";
 
-import { nodeMap, ruleNames, MarkdownParser } from "highmark-grammar";
+import { nodeMap, ruleNames, MarkdownParser } from "highmark-grammars";
 
 import BlockListingMarkdownNode from "../node/markdown/blockListing";
 
