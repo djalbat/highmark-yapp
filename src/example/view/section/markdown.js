@@ -13,7 +13,13 @@ class MarkdownSection extends Element {
     }
 
     if (node !== null) {
-      node.createDOMElement(tokens);
+      const footnotes = [],
+            context = {
+              tokens,
+              footnotes
+            };
+
+      node.createDOMElement(context);
 
       this.mount(node);
 

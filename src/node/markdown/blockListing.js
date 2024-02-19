@@ -11,9 +11,9 @@ const { first, last } = arrayUtilities,
       { tokenContentFromToken } = tokenUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
-  createDOMElement(tokens) {
+  createDOMElement(context) {
     const language = this.getLanguage(),
-          content = this.getContent(tokens),
+          content = this.getContent(context),
           configuration ={
             language
           },
@@ -25,8 +25,10 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return domElement;
   }
 
-  getContent(tokens) {
+  getContent(context) {
     let content = EMPTY_STRING;
+
+    let { tokens } = context;
 
     const childNodes = this.getChildNodes(),
           lastChildNode = last(childNodes),
