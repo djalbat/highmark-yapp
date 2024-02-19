@@ -11,5 +11,5 @@ export default class BlockListing extends Yapp {
 
   static fromClass(Class, properties) { return Yapp.fromClass(BlockListing, properties); }
 
-  static fromContentAndOptions(content, options) { return Yapp.fromContentAndOptions(BlockListing, content, options); }
+  static fromContentAndConfiguration(content, comfiguration) { return Yapp.fromContentAndConfiguration(BlockListing, content, comfiguration); }
 }
