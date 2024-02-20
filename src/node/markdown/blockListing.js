@@ -71,15 +71,17 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   didMount() {
-    const blockListing = this.getBlockListing();
+    const blockListing = this.getBlockListing(),
+          element = blockListing; ///
 
-    mountElement(blockListing);
+    mountElement(element);
   }
 
   willUnmount() {
-    const blockListing = this.getBlockListing();
+    const blockListing = this.getBlockListing(),
+          element = blockListing; ///
 
-    unmountElement(blockListing);
+    unmountElement(element);
   }
 
   static fromRuleNameAndChildNodes(ruleName, childNodes) { return MarkdownNode.fromRuleNameAndChildNodes(BlockListingMarkdownNode, ruleName, childNodes); }
