@@ -33,6 +33,14 @@ class View extends Element {
     this.updateMarkdownSection(node, tokens);
   }
 
+  didMount() {
+    this.update();
+  }
+
+  willUnmount() {
+    ///
+  }
+
   childElements() {
     return (
 
@@ -61,8 +69,6 @@ class View extends Element {
           content = initialContent;
 
     this.setContent(content);
-
-    this.update();
   }
 
   static initialContent = `
