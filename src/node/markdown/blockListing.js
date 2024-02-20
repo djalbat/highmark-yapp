@@ -1,5 +1,6 @@
 "use strict";
 
+import { elementMixins } from "easy";
 import { arrayUtilities } from "necessary";
 import { tokenUtilities, MarkdownNode } from "highmark-grammars";
 
@@ -8,7 +9,8 @@ import BlockListing from "../../blockListing";
 import { EMPTY_STRING } from "../../constants";
 
 const { first, last } = arrayUtilities,
-      { tokenContentFromToken } = tokenUtilities;
+      { tokenContentFromToken } = tokenUtilities,
+      { mountElement, unmountElement } = elementMixins;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
   createDOMElement(context) {
@@ -71,13 +73,13 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   didMount() {
     const blockListing = this.getBlockListing();
 
-    blockListing.didMount();
+    mountElement(blockListing);
   }
 
   willUnmount() {
-    const yapp = this.getBlockListing();
+    const blockListing = this.getBlockListing();
 
-    yapp.willUnmount();
+    unmountElement(blockListing);
   }
 
   static fromRuleNameAndChildNodes(ruleName, childNodes) { return MarkdownNode.fromRuleNameAndChildNodes(BlockListingMarkdownNode, ruleName, childNodes); }
