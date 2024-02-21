@@ -8,14 +8,17 @@ const markdownLexer = MarkdownLexer.fromNothing(),
 
 export function nodeFromContent(content) {
   const tokens = markdownLexer.tokenise(content),
-        node = markdownParser.parse(tokens),
-        footnotes = [],
-        context = {
-          tokens,
-          footnotes
-        };
+        node = markdownParser.parse(tokens);
 
-  node.createDOMElement(context);
+  if (node !== null) {
+    const footnotes = [],
+          context = {
+            tokens,
+            footnotes
+          };
+
+    node.createDOMElement(context);
+  }
 
   return node;
 }
