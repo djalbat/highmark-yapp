@@ -8,13 +8,10 @@ import { RowsDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 import ColumnDiv from "./view/div/column";
 import SubHeading from "./view/subHeading";
 import SizeableDiv from "./view/div/sizeable";
-import MarkdownLexer from "../markdown/lexer";
-import MarkdownParser from "../markdown/parser";
 import ContentTextarea from "./view/textarea/content";
 import MarkdownSection from "./view/section/markdown";
 
-const markdownLexer = MarkdownLexer.fromNothing(),
-      markdownParser = MarkdownParser.fromNothing();
+import { nodeFromContent } from "../utilities/markdown";
 
 class View extends Element {
   changeHandler = (event, element) => {
@@ -27,10 +24,9 @@ class View extends Element {
 
   update() {
     const content = this.getContent(),
-          tokens = markdownLexer.tokenise(content),
-          node = markdownParser.parse(tokens);
+          node = nodeFromContent(content);
 
-    this.updateMarkdownSection(node, tokens);
+    this.updateMarkdownSection(node);
   }
 
   didMount() {

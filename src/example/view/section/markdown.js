@@ -5,7 +5,7 @@ import withStyle from "easy-with-style";
 import { Element } from "easy";
 
 class MarkdownSection extends Element {
-  update(node, tokens) {
+  update(node) {
     const previousNode = this.getPreviousNode();
 
     if (previousNode !== null) {
@@ -13,14 +13,6 @@ class MarkdownSection extends Element {
     }
 
     if (node !== null) {
-      const footnotes = [],
-            context = {
-              tokens,
-              footnotes
-            };
-
-      node.createDOMElement(context);
-
       this.mount(node);
 
       const previousNode = node;  ///

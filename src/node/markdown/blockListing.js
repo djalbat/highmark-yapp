@@ -6,8 +6,6 @@ import { arrayUtilities } from "necessary";
 
 import BlockListing from "../../blockListing";
 
-import { EMPTY_STRING } from "../../constants";
-
 const { first, second } = arrayUtilities,
       { mountElement, unmountElement } = elementMixins;
 
