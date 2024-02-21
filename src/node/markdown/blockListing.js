@@ -1,15 +1,12 @@
 "use strict";
 
+import { MarkdownNode } from "highmark-grammars";
 import { elementMixins } from "easy";
 import { arrayUtilities } from "necessary";
-import { tokenUtilities, MarkdownNode } from "highmark-grammars";
 
 import BlockListing from "../../blockListing";
 
-import { EMPTY_STRING } from "../../constants";
-
-const { first, last } = arrayUtilities,
-      { tokenContentFromToken } = tokenUtilities,
+const { first } = arrayUtilities,
       { mountElement, unmountElement } = elementMixins;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
@@ -27,28 +24,11 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return domElement;
   }
 
-  getContent(context) {
-    let content = EMPTY_STRING;
-
-    let { tokens } = context;
-
+  getContent() {
     const childNodes = this.getChildNodes(),
-          lastChildNode = last(childNodes),
           firstChildNode = first(childNodes),
-          lastChildNodeFirstSignificantToken = lastChildNode.getFirstSignificantToken(),
-          firstChildNodeLastSignificantToken = firstChildNode.getLastSignificantToken(),
-          lastChildNodeFirstSignificantTokenIndex = tokens.indexOf(lastChildNodeFirstSignificantToken),
-          firstChildNodeLastSignificantTokenIndex = tokens.indexOf(firstChildNodeLastSignificantToken),
-          start = firstChildNodeLastSignificantTokenIndex + 1,
-          end = lastChildNodeFirstSignificantTokenIndex - 1;  ///
-
-    tokens = tokens.slice(start, end);  ///
-
-    tokens.forEach((token) => {
-      const tokenContent = tokenContentFromToken(token);
-
-      content += tokenContent;
-    });
+          blockTextMarkdownNode = firstChildNode, ///
+          content = blockTextMarkdownNode.getContent();
 
     return content;
   }
