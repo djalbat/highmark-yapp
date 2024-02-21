@@ -6,7 +6,9 @@ import { arrayUtilities } from "necessary";
 
 import BlockListing from "../../blockListing";
 
-const { first } = arrayUtilities,
+import { EMPTY_STRING } from "../../constants";
+
+const { first, second } = arrayUtilities,
       { mountElement, unmountElement } = elementMixins;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
@@ -24,11 +26,16 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return domElement;
   }
 
-  getContent() {
+  getContent(context) {
+    let content;
+
     const childNodes = this.getChildNodes(),
-          firstChildNode = first(childNodes),
-          blockTextMarkdownNode = firstChildNode, ///
-          content = blockTextMarkdownNode.getContent();
+          secondChildNode = second(childNodes),
+          blockTextMarkdownNode = secondChildNode; ///
+
+    content = blockTextMarkdownNode.getContent(context);
+
+    content = content.slice(0, -1);
 
     return content;
   }
