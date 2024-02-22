@@ -5,15 +5,15 @@ import { MarkdownLexer, tokenTypes } from "highmark-grammars";
 
 const { first } = arrayUtilities,
       { entries } = MarkdownLexer,
-      { BLOCK_LISTING_TOKEN_TYPE } = tokenTypes;
+      { BACKTICKS_TOKEN_TYPE } = tokenTypes;
 
 entries.forEach((entry) => {
   const keys = Object.keys(entry),
         firstKey = first(keys),
         tokenType = firstKey; ///
 
-  if (tokenType === BLOCK_LISTING_TOKEN_TYPE) {
-    entry[tokenType] = "^'''";
+  if (tokenType === BACKTICKS_TOKEN_TYPE) {
+    entry[tokenType] = "^'''";  ///
   }
 });
 
