@@ -1,13 +1,13 @@
 "use strict";
 
 import { MarkdownNode } from "highmark-grammars";
-import { elementMixins } from "easy";
 import { arrayUtilities } from "necessary";
+import { elementUtilities } from "easy";
 
 import BlockListing from "../../blockListing";
 
 const { first, second } = arrayUtilities,
-      { mountElement, unmountElement } = elementMixins;
+      { mountElement, unmountElement } = elementUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
   createDOMElement(context) {
