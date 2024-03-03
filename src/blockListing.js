@@ -9,7 +9,5 @@ export default class BlockListing extends Yapp {
     hiddenScrollbars: true
   };
 
-  static fromClass(Class, properties) { return Yapp.fromClass(BlockListing, properties); }
-
   static fromContentAndConfiguration(content, configuration) { return Yapp.fromContentAndConfiguration(BlockListing, content, configuration); }
 }
