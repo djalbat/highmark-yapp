@@ -3,6 +3,7 @@
 import withStyle from "easy-with-style";  ///
 
 import { Element } from "easy";
+import { markdownUtilities } from "../index"; ///
 import { RowsDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 
 import ColumnDiv from "./view/div/column";
@@ -11,7 +12,7 @@ import SizeableDiv from "./view/div/sizeable";
 import ContentTextarea from "./view/textarea/content";
 import MarkdownSection from "./view/section/markdown";
 
-import { nodeFromContent } from "../utilities/markdown";
+const { nodeFromContent } = markdownUtilities;
 
 class View extends Element {
   changeHandler = (event, element) => {
