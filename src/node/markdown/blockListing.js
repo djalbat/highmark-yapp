@@ -11,7 +11,8 @@ const { first, second } = arrayUtilities,
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
   createDOMElement(context) {
-    const language = this.getLanguage(),
+    const className = this.getClassName(),
+          language = className, ///
           content = this.getContent(context),
           configuration ={
             language
@@ -38,13 +39,13 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return content;
   }
 
-  getLanguage() {
+  getClassName() {
     const childNodes = this.getChildNodes(),
           firstChildNode = first(childNodes),
           blockListingStartMarkdownNode = firstChildNode,
-          language = blockListingStartMarkdownNode.getLanguage();
+          className = blockListingStartMarkdownNode.getClassName();
 
-    return language;
+    return className;
   }
 
   getBlockListing() {
