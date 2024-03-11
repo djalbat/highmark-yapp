@@ -9,32 +9,32 @@ const style = `
     padding: ${blockListingPadding};
   }
 
-  section.markdown {
+  div.markdown {
     font-size: 2rem;
     font-family: serif;
   }
   
-  section.markdown h1 {
+  div.markdown h1 {
     font-size: 4rem;
   }
   
-  section.markdown h2 {
+  div.markdown h2 {
     font-size: 3rem;
   }
   
-  section.markdown h3 {
+  div.markdown h3 {
     font-size: 2.5rem;
   }
   
-  section.markdown h4 {
+  div.markdown h4 {
     font-size: 2rem;
   }
   
-  section.markdown li {
+  div.markdown li {
     margin-left: 2rem;
   }
   
-  section.markdown span.error {
+  div.markdown span.error {
     text-decoration-line: underline;
     text-decoration-color: red;
   }

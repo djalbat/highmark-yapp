@@ -4,7 +4,7 @@ import withStyle from "easy-with-style";
 
 import { Element } from "easy";
 
-class MarkdownSection extends Element {
+class MarkdownDiv extends Element {
   update(node) {
     const previousNode = this.getPreviousNode();
 
@@ -42,10 +42,10 @@ class MarkdownSection extends Element {
   }
 
   parentContext() {
-    const updateMarkdownSection = this.update.bind(this);
+    const updateMarkdownDiv = this.update.bind(this);
 
     return ({
-      updateMarkdownSection
+      updateMarkdownDiv
     });
   }
 
@@ -53,14 +53,14 @@ class MarkdownSection extends Element {
     this.setInitialState();
   }
 
-  static tagName = "section";
+  static tagName = "div";
 
   static defaultProperties = {
     className: "markdown"
   };
 }
 
-export default withStyle(MarkdownSection)`
+export default withStyle(MarkdownDiv)`
 
   width: 100%;
   height: 100%;

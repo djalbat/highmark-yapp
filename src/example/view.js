@@ -9,8 +9,8 @@ import { RowsDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 import ColumnDiv from "./view/div/column";
 import SubHeading from "./view/subHeading";
 import SizeableDiv from "./view/div/sizeable";
+import MarkdownDiv from "./view/div/markdown";
 import ContentTextarea from "./view/textarea/content";
-import MarkdownSection from "./view/section/markdown";
 
 const { nodeFromContent } = markdownUtilities;
 
@@ -27,7 +27,7 @@ class View extends Element {
     const content = this.getContent(),
           node = nodeFromContent(content);
 
-    this.updateMarkdownSection(node);
+    this.updateMarkdownDiv(node);
   }
 
   didMount() {
@@ -52,7 +52,7 @@ class View extends Element {
         </SizeableDiv>
         <VerticalSplitterDiv/>
         <ColumnDiv>
-          <MarkdownSection/>
+          <MarkdownDiv/>
         </ColumnDiv>
       </ColumnsDiv>
 
