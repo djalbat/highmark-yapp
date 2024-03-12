@@ -1,6 +1,6 @@
 "use strict";
 
-import { MarkdownNode } from "highmark-grammars";
+import { MarkdownNode } from "highmark-markdown";
 import { arrayUtilities } from "necessary";
 import { elementUtilities } from "easy";
 
