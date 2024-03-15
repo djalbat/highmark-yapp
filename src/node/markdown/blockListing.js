@@ -13,7 +13,7 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   createDOMElement(context) {
     const className = this.getClassName(),
           language = className, ///
-          content = this.getContent(context),
+          content = this.content(context),
           configuration ={
             language
           },
@@ -25,14 +25,14 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return domElement;
   }
 
-  getContent(context) {
+  content(context) {
     let content;
 
     const childNodes = this.getChildNodes(),
           secondChildNode = second(childNodes),
           blockTextMarkdownNode = secondChildNode; ///
 
-    content = blockTextMarkdownNode.getContent(context);
+    content = blockTextMarkdownNode.content(context);
 
     content = content.slice(0, -1);
 
