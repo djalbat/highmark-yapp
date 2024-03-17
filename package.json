@@ -1,7 +1,7 @@
 {
   "name": "highmark-yapp",
   "author": "James Smith",
-  "version": "0.0.169",
+  "version": "0.0.170",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/highmark-uapp",
   "description": "Highmark with Yapp listings.",
@@ -12,7 +12,7 @@
   "dependencies": {
     "easy": "^16.0.19",
     "highmark-markdown": "^0.0.11",
-    "yapp": "^5.1.16"
+    "yapp": "^5.1.17"
   },
   "devDependencies": {
     "@swc/core": "^1.2.50",
