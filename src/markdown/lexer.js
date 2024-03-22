@@ -1,10 +1,10 @@
 "use strict";
 
 import { arrayUtilities } from "necessary";
-import { tokenTypes, MarkdownLexer } from "highmark-markdown";
+import { tokenTypes, MarkdownLexer as MarkdownLexerBase } from "highmark-markdown";
 
 const { first } = arrayUtilities,
-      { entries } = MarkdownLexer,
+      { entries } = MarkdownLexerBase,
       { BACKTICKS_TOKEN_TYPE } = tokenTypes;
 
 entries.forEach((entry) => {
@@ -17,7 +17,13 @@ entries.forEach((entry) => {
   }
 });
 
-export default class extends MarkdownLexer {
+export default class MarkdownLexer extends MarkdownLexerBase {
   static entries = entries;
+
+  static fromNothing() { return MarkdownLexerBase.fromNothing(MarkdownLexer); }
+
+  static fromRules(rules) { return MarkdownLexerBase.fromRules(MarkdownLexer, rules); }
+
+  static fromEntries(entries) { return MarkdownLexerBase.fromEntries(MarkdownLexer, entries); }
 }
 

@@ -1,6 +1,6 @@
 "use strict";
 
-import { nodeMap, ruleNames, MarkdownParser } from "highmark-markdown";
+import { nodeMap, ruleNames, MarkdownParser as MarkdownParserBase } from "highmark-markdown";
 
 import BlockListingMarkdownNode from "../node/markdown/blockListing";
 
@@ -10,4 +10,12 @@ Object.assign(nodeMap, {
   [BLOCK_LISTING_RULE_NAME]: BlockListingMarkdownNode
 });
 
-export default class extends MarkdownParser {}
+export default class MarkdownParser extends MarkdownParserBase {
+  static nodeMap = nodeMap;
+
+  static fromNothing() { return MarkdownParserBase.fromNothing(MarkdownParser); }
+
+  static fromBNF(bnf) { return MarkdownParserBase.fromBNF(MarkdownParser, bnf); }
+
+  static fromEntries(entries) { return MarkdownParserBase.fromEntries(MarkdownParser, entries); }
+}
