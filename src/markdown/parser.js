@@ -10,6 +10,4 @@ Object.assign(nodeMap, {
   [BLOCK_LISTING_RULE_NAME]: BlockListingMarkdownNode
 });
 
-export default class extends MarkdownParser {
-  static nodeMap = nodeMap;
-}
+export default class extends MarkdownParser {}
