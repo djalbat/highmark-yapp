@@ -13,7 +13,7 @@ entries.forEach((entry) => {
         tokenType = firstKey; ///
 
   if (tokenType === BACKTICKS_TOKEN_TYPE) {
-    entry[tokenType] = "^'''";  ///
+    entry[tokenType] = "^'''";
   }
 });
 

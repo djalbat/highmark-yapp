@@ -10,8 +10,15 @@ const { first, second } = arrayUtilities,
       { mountElement, unmountElement } = elementUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
+  getElement() {
+    const domElement = this.getDOMElement(),
+      element = domElement.__element__; ///
+
+    return element;
+  }
+
   createDOMElement(context) {
-    const className = this.getClassName(),
+    const className = this.className(context),
           language = className, ///
           content = this.content(context),
           configuration ={
@@ -23,6 +30,15 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     this.setDOMElement(domElement);
 
     return domElement;
+  }
+
+  className(context) {
+    const childNodes = this.getChildNodes(),
+          firstChildNode = first(childNodes),
+          blockListingStartMarkdownNode = firstChildNode,
+          className = blockListingStartMarkdownNode.className(context);
+
+    return className;
   }
 
   content(context) {
@@ -39,33 +55,14 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return content;
   }
 
-  getClassName() {
-    const childNodes = this.getChildNodes(),
-          firstChildNode = first(childNodes),
-          blockListingStartMarkdownNode = firstChildNode,
-          className = blockListingStartMarkdownNode.getClassName();
-
-    return className;
-  }
-
-  getBlockListing() {
-    const domElement = this.getDOMElement(),
-          element = domElement.__element__, ///
-          blockListing = element; ///
-
-    return blockListing;
-  }
-
   didMount() {
-    const blockListing = this.getBlockListing(),
-          element = blockListing; ///
+    const element = this.getElement();
 
     mountElement(element);
   }
 
   willUnmount() {
-    const blockListing = this.getBlockListing(),
-          element = blockListing; ///
+    const element = this.getElement();
 
     unmountElement(element);
   }
