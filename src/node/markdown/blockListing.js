@@ -12,7 +12,7 @@ const { first, second } = arrayUtilities,
 export default class BlockListingMarkdownNode extends MarkdownNode {
   getElement() {
     const domElement = this.getDOMElement(),
-      element = domElement.__element__; ///
+          element = domElement.__element__; ///
 
     return element;
   }

@@ -74,6 +74,7 @@ export default function blah() {
   ///
 }
 '''
+
 `;
 
   static tagName = "div";
