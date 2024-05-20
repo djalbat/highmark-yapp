@@ -2,7 +2,7 @@
 
 Highmark with Yapp listings.
 
-This package augments the HTML created with Highmark with [Yapp listings](https://github.com/djalbat/yapp) listings.
+This package augments the HTML created with Highmark with [Yapp](https://github.com/djalbat/yapp) listings.
 The result is much more pleasing to the eye.
 See the Juxtapose site, for example, which makes use of this package:
 
@@ -21,14 +21,16 @@ Using Highmark for creating HTML for websites usually works extremely well and e
 ## Introduction
 
 Highmark is a document preparation system inspired by [Markdown](https://en.wikipedia.org/wiki/Markdown) and [TeX](https://en.wikipedia.org/wiki/TeX).
-There are several packages in the distribution, of which only the CLI tool is needed by end users.
-All of the other packages are likely only of interest to prospective developers.
+There are several packages in the distribution.
 
 - [Highmark-CLI](https://github.com/djalbat/highmark-cli) Highmark's CLI tool.
 - [Highmark Yapp](https://github.com/djalbat/highmark-yapp) Highmark with Yapp listings.
 - [Highmark Fonts](https://github.com/djalbat/highmark-fonts) Computer Modern fonts for Highmark.
 - [Highmark Client](https://github.com/djalbat/highmark-clieet) Highmark's bundled client for viewing HTML.
 - [Highmark Markdown](https://github.com/djalbat/highmark-markdown) Highmark's Markdown and Markdown Style languages.
+
+Only the CLI tool is needed by end users.
+All of the other packages are likely only of interest to prospective developers.
 
 ## Installation
 
@@ -68,6 +70,7 @@ import { renderYappStyles } from "highmark-yapp";
 
 renderYappStyles();
 
+...
 ```
 
 Next, to create a node from some Markdown content, use the `nodeFromContent()` utility function:
@@ -79,7 +82,8 @@ const { nodeFromContent } = markdownUtilities;
 
 const content = `
 
-...
+        ...
+        
       `,
       node = nodeFromContent(node);
 
@@ -109,9 +113,8 @@ class Article extends Element {
 }
 ```
 
-In fact in this listing the use of the `nodeFromContent()` function is show again.
-The `didMount()` method assumes that some content is defined by way of a static property.
-One way to do this would be to extend this base `Article` class thus:
+Here the `didMount()` method assumes that some content is defined by way of the static `content` property.
+One way to do this would be to extend the `Article` class thus:
 
 ```
 import Article from "../article";
@@ -124,13 +127,12 @@ export default class ArchitectureArticle extends Article {
     ...
     
   `;
-  
+}  
 ```
 
-One last thing to note is the usual delimiters for block listings consisting of three backticks, that is `\`\`\`, have been replaced with three single quote marks `'''`. 
-This generally makes things a little easier when working inside string template literals that use backticks for delimiters.
+Note that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
+This generally makes things easier when working inside string template literals that use backticks for delimiters of course.
 
 ## Contact
 
 * james.smith@djalbat.com
-
