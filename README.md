@@ -16,6 +16,7 @@ Using Highmark for creating HTML for websites usually works extremely well and e
 - [Installation](#installation)
 - [Example](#example)
 - [Usage](#usage)
+- [Building](#buidling)
 - [Contact](#contact)
 
 ## Introduction
@@ -26,7 +27,7 @@ There are several packages in the distribution.
 - [Highmark-CLI](https://github.com/djalbat/highmark-cli) Highmark's CLI tool.
 - [Highmark Yapp](https://github.com/djalbat/highmark-yapp) Highmark with Yapp listings.
 - [Highmark Fonts](https://github.com/djalbat/highmark-fonts) Computer Modern fonts for Highmark.
-- [Highmark Client](https://github.com/djalbat/highmark-clieet) Highmark's bundled client for viewing HTML.
+- [Highmark Client](https://github.com/djalbat/highmark-client) Highmark's bundled client for viewing HTML.
 - [Highmark Markdown](https://github.com/djalbat/highmark-markdown) Highmark's Markdown and Markdown Style languages.
 
 Only the CLI tool is needed by end users.
@@ -132,6 +133,13 @@ export default class ArchitectureArticle extends Article {
 
 Note that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
 This generally makes things easier when working inside string template literals that use backticks for delimiters of course.
+
+## Building
+
+Automation is done with [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
+
+    npm run build-debug
+    npm run watch-debug
 
 ## Contact
 
