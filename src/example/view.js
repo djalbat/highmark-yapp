@@ -68,11 +68,72 @@ class View extends Element {
     this.setContent(content);
   }
 
-  static initialContent = `
+  static initialContent = `### JavaScript
+  
 '''javascript
-export default function blah() {
-  ///
+"use strict";
+
+import "juxtapose";
+
+import withStyle from "easy-with-style"; ///
+
+import { Body } from "easy";
+
+function simpleApplication(selector) {
+  const body = new Body(selector);
+
+  body.mount(
+
+    <p>
+      A simple application.
+    </p>
+
+  );
 }
+
+export default withStyle(simpleApplication)\`
+
+  color: #333;
+
+\`;
+'''
+
+### JSON
+
+'''json
+{  
+  "type": "book",
+  "title": "Look to Windward",
+  "author": "Look to Windward",
+  "stores" : [{
+    "identifier": 123
+  }],
+  "details" : {
+    "in-print": true,
+    "stock-count": 123
+  }
+}
+'''
+
+### XML
+
+'''xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Look to Windward by Iain M. Banks -->
+<book>
+  <name>
+    Look to Windward
+  </name>
+  <author>
+    Iain M. Banks
+  </author>
+  <language>
+    English
+  </language>
+  <genre>
+    Science fiction
+  </genre>
+</book>
 '''
 
 `;
