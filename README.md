@@ -43,7 +43,6 @@ If you would like to contribute or would simply like to have a look at the code,
 
     npm install
 
-
 ## Example
 
 There is a small development server that can be run from within the project's directory with the following command:
