@@ -15,10 +15,6 @@ import ContentTextarea from "./view/textarea/content";
 const { nodeFromContent } = markdownUtilities;
 
 class View extends Element {
-  changeHandler = (event, element) => {
-    this.update();
-  }
-
   keyUpHandler = (event, element) => {
     this.update();
   }
@@ -68,7 +64,12 @@ class View extends Element {
     this.setContent(content);
   }
 
-  static initialContent = `### JavaScript
+  static initialContent = `'''javascript
+"use strict";
+'''
+`;
+
+  static _initialContent = `### JavaScript
   
 '''javascript
 "use strict";

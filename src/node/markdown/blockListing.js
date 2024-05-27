@@ -6,7 +6,7 @@ import { elementUtilities } from "easy";
 
 import BlockListing from "../../blockListing";
 
-const { first, second } = arrayUtilities,
+const { first, third } = arrayUtilities,
       { mountElement, unmountElement } = elementUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
@@ -45,8 +45,8 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     let content;
 
     const childNodes = this.getChildNodes(),
-          secondChildNode = second(childNodes),
-          blockTextMarkdownNode = secondChildNode; ///
+          thirdChildNode = third(childNodes),
+          blockTextMarkdownNode = thirdChildNode; ///
 
     content = blockTextMarkdownNode.content(context);
 
