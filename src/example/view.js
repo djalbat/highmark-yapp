@@ -64,12 +64,8 @@ class View extends Element {
     this.setContent(content);
   }
 
-  static initialContent = `'''javascript
-"use strict";
-'''
-`;
-
-  static _initialContent = `### JavaScript
+  static initialContent = `
+### JavaScript
   
 '''javascript
 "use strict";
@@ -94,7 +90,7 @@ function simpleApplication(selector) {
 
 export default withStyle(simpleApplication)\`
 
-  color: #333;
+  color: \\#333;
 
 \`;
 '''
@@ -136,7 +132,6 @@ export default withStyle(simpleApplication)\`
   </genre>
 </book>
 '''
-
 `;
 
   static tagName = "div";

@@ -42,15 +42,10 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   content(context) {
-    let content;
-
     const childNodes = this.getChildNodes(),
           thirdChildNode = third(childNodes),
-          blockTextMarkdownNode = thirdChildNode; ///
-
-    content = blockTextMarkdownNode.content(context);
-
-    content = content.slice(0, -1);
+          blockTextMarkdownNode = thirdChildNode, ///
+          content = blockTextMarkdownNode.content(context);
 
     return content;
   }
