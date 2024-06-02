@@ -6,7 +6,9 @@ import { elementUtilities } from "easy";
 
 import BlockListing from "../../blockListing";
 
-const { first, third } = arrayUtilities,
+import { EMPTY_STRING } from "../../constants";
+
+const { first } = arrayUtilities,
       { mountElement, unmountElement } = elementUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
@@ -42,10 +44,22 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   content(context) {
+    let content = EMPTY_STRING;
+
     const childNodes = this.getChildNodes(),
-          thirdChildNode = third(childNodes),
-          blockTextMarkdownNode = thirdChildNode, ///
-          content = blockTextMarkdownNode.content(context);
+          childNodesLength = childNodes.length,
+          firstIndex = 0,
+          lastIndex = childNodesLength - 1;
+
+    childNodes.forEach((childNode, index) => {
+      if ((index !== firstIndex) && (index !== lastIndex)) {
+        const childNodeContent = childNode.content(context);
+
+        content = `${content}${childNodeContent}`;
+      }
+    });
+
+    content = content.replace(/\n$/, EMPTY_STRING);
 
     return content;
   }

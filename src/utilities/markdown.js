@@ -7,14 +7,16 @@ const markdownLexer = MarkdownLexer.fromNothing(),
       markdownParser = MarkdownParser.fromNothing();
 
 export function nodeFromContent(content) {
-  const tokens = markdownLexer.tokenise(content),
-        node = markdownParser.parse(tokens);
+  const lexer = markdownLexer,  ///
+        parser = markdownParser,  ///
+        tokens = lexer.tokenise(content),
+        startRule = parser.getStartRule(),
+        startOfContent = true,
+        node = parser.parse(tokens, startRule, startOfContent);
 
   if (node !== null) {
-    const footnotes = [],
-          context = {
-            tokens,
-            footnotes
+    const context = {
+            tokens
           };
 
     node.createDOMElement(context);

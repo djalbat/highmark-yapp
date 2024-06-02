@@ -59,7 +59,7 @@ class View extends Element {
     this.assignContext();
 
     const { initialContent } = this.constructor,
-          content = initialContent;
+          content = initialContent; ///
 
     this.setContent(content);
   }

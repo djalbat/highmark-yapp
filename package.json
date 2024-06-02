@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "easy": "^18.1.4",
-    "highmark-markdown": "^0.0.335",
+    "highmark-markdown": "^0.0.340",
     "yapp": "^5.1.72"
   },
   "devDependencies": {
