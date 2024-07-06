@@ -73,23 +73,24 @@ renderYappStyles();
 ...
 ```
 
-Next, to create a node from some Markdown content, use the `nodeFromContent()` utility function:
+Next, to create a node from some Markdown content, use the `tokensFromContent()` and `nodeFromTokens()` utility functions:
 
 ```
 import { markdownUtilities } from "highmark-yapp";
 
-const { nodeFromContent } = markdownUtilities;
+const { tokensFromContent, nodeFromTokens } = markdownUtilities;
 
 const content = `
 
         ...
         
       `,
-      node = nodeFromContent(node);
+      tokens = tokensFromContent(node),
+      node = nodeFromTokens(tokens);
 
 ```
 
-Then it is just a question of mounting the node within an [Easy](https://github.com/djalbat/easy) element:
+Then it is just a question of mounting the node:
 
 ```
 import { Element } from "easy";
@@ -100,9 +101,13 @@ const { nodeFromContent } = markdownUtilities;
 class Article extends Element {
   didMount() {
     const { content } = this.constructor,
-          node = nodeFromContent(content);
+          tokens = tokensFromContent(node),
+          node = nodeFromTokens(tokens);
+          domElement = this.getDOMElement(),
+          parentDOMElement = domElement,  ///
+          siblingDOMElement = null;
 
-    this.mount(node);
+    node.mount(parentDOMElement, siblingDOMElement, context);
   }
 
   willUnmount() {
