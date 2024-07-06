@@ -5,46 +5,63 @@ import withStyle from "easy-with-style";
 import { Element } from "easy";
 
 class MarkdownDiv extends Element {
-  update(node) {
-    const previousNode = this.getPreviousNode();
+  clear() {
+    const divisionMarkdownNOde = this.getDivisionMarkdownNode();
 
-    if (previousNode !== null) {
-      this.unmount(previousNode);
-    }
+    if (divisionMarkdownNOde !== null) {
+      const domElement = this.getDOMElement(),
+            parentDOMElement = domElement;  ///
 
-    if (node !== null) {
-      this.mount(node);
+      divisionMarkdownNOde.unmount(parentDOMElement);
 
-      const previousNode = node;  ///
-
-      this.setPreviousNode(previousNode);
+      this.clearDivisionMarkdownNode();
     }
   }
 
-  getPreviousNode() {
-    const { previousNode } = this.getState();
+  update(divisionMarkdownNode, context) {
+    if (divisionMarkdownNode !== null) {
+      const domElement = this.getDOMElement(),
+            parentDOMElement = domElement,  ///
+            siblingDOMElement = null;
 
-    return previousNode;
+      divisionMarkdownNode.mount(parentDOMElement, siblingDOMElement, context);
+
+      this.setDivisionMarkdownNode(divisionMarkdownNode);
+    }
   }
 
-  setPreviousNode(previousNode) {
+  clearDivisionMarkdownNode() {
+    const divisionMarkdownNode = null;
+
+    this.setDivisionMarkdownNode(divisionMarkdownNode);
+  }
+
+  getDivisionMarkdownNode() {
+    const { divisionMarkdownNode } = this.getState();
+
+    return divisionMarkdownNode;
+  }
+
+  setDivisionMarkdownNode(divisionMarkdownNode) {
     this.updateState({
-      previousNode
+      divisionMarkdownNode
     });
   }
 
   setInitialState() {
-    const previousNode = null;
+    const divisionMarkdownNode = null;
 
     this.setState({
-      previousNode
+      divisionMarkdownNode
     });
   }
 
   parentContext() {
-    const updateMarkdownDiv = this.update.bind(this);
+    const clearMarkdownDiv = this.clear.bind(this),
+          updateMarkdownDiv = this.update.bind(this);
 
     return ({
+      clearMarkdownDiv,
       updateMarkdownDiv
     });
   }

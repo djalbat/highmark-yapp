@@ -2,45 +2,20 @@
 
 import { MarkdownNode } from "highmark-markdown";
 import { arrayUtilities } from "necessary";
-import { elementUtilities } from "easy";
 
 import BlockListing from "../../blockListing";
 
 import { EMPTY_STRING } from "../../constants";
 
-const { first } = arrayUtilities,
-      { mountElement, unmountElement } = elementUtilities;
+const { first } = arrayUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
-  getElement() {
+  getBlockListing() {
     const domElement = this.getDOMElement(),
-          element = domElement.__element__; ///
+          { __element__ } = domElement, ///
+          blockListing = __element__; ///
 
-    return element;
-  }
-
-  createDOMElement(context) {
-    const className = this.className(context),
-          language = className, ///
-          content = this.content(context),
-          configuration ={
-            language
-          },
-          blockListing = BlockListing.fromContentAndConfiguration(content, configuration),
-          domElement = blockListing.getDOMElement();
-
-    this.setDOMElement(domElement);
-
-    return domElement;
-  }
-
-  className(context) {
-    const childNodes = this.getChildNodes(),
-          firstChildNode = first(childNodes),
-          blockListingStartMarkdownNode = firstChildNode,
-          className = blockListingStartMarkdownNode.className(context);
-
-    return className;
+    return blockListing;
   }
 
   content(context) {
@@ -64,16 +39,42 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
     return content;
   }
 
-  didMount() {
-    const element = this.getElement();
+  className(context) {
+    const childNodes = this.getChildNodes(),
+          firstChildNode = first(childNodes),
+          blockListingStartMarkdownNode = firstChildNode,
+          className = blockListingStartMarkdownNode.className(context);
 
-    mountElement(element);
+    return className;
   }
 
-  willUnmount() {
-    const element = this.getElement();
+  mount(parentDOMElement, siblingDOMElement, context) {
+    super.mount(parentDOMElement, siblingDOMElement, context);
 
-    unmountElement(element);
+    const blockListing = this.getBlockListing();
+
+    blockListing.didMount();
+  }
+
+  unmount(parentDOMElement, context) {
+    const blockListing = this.getBlockListing();
+
+    blockListing.willUnmount();
+
+    super.unmount(parentDOMElement, context);
+  }
+
+  createDOMElement(context) {
+    const content = this.content(context),
+          className = this.className(context),
+          language = className, ///
+          configuration ={
+            language
+          },
+          blockListing = BlockListing.fromContentAndConfiguration(content, configuration),
+          domElement = blockListing.getDOMElement();
+
+    return domElement;
   }
 
   static fromRuleNameChildNodesAndOpacity(ruleName, childNodes, opacity) { return MarkdownNode.fromRuleNameChildNodesAndOpacity(BlockListingMarkdownNode, ruleName, childNodes, opacity); }

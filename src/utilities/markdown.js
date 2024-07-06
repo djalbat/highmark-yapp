@@ -6,25 +6,23 @@ import MarkdownParser from "../markdown/parser";
 const markdownLexer = MarkdownLexer.fromNothing(),
       markdownParser = MarkdownParser.fromNothing();
 
-export function nodeFromContent(content) {
+export function tokensFromContent(content) {
   const lexer = markdownLexer,  ///
-        parser = markdownParser,  ///
-        tokens = lexer.tokenise(content),
+        tokens = lexer.tokenise(content);
+
+  return tokens;
+}
+
+export function nodeFromTokens(tokens) {
+  const parser = markdownParser,  ///
         startRule = parser.getStartRule(),
         startOfContent = true,
         node = parser.parse(tokens, startRule, startOfContent);
-
-  if (node !== null) {
-    const context = {
-            tokens
-          };
-
-    node.createDOMElement(context);
-  }
 
   return node;
 }
 
 export default {
-  nodeFromContent
+  tokensFromContent,
+  nodeFromTokens
 };

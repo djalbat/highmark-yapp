@@ -12,7 +12,7 @@ import SizeableDiv from "./view/div/sizeable";
 import MarkdownDiv from "./view/div/markdown";
 import ContentTextarea from "./view/textarea/content";
 
-const { nodeFromContent } = markdownUtilities;
+const { tokensFromContent, nodeFromTokens } = markdownUtilities;
 
 class View extends Element {
   keyUpHandler = (event, element) => {
@@ -21,9 +21,16 @@ class View extends Element {
 
   update() {
     const content = this.getContent(),
-          node = nodeFromContent(content);
+          tokens = tokensFromContent(content),
+          node = nodeFromTokens(tokens),
+          context = {
+            tokens
+          },
+          divisionMarkdownNode = node;  ///
 
-    this.updateMarkdownDiv(node);
+    this.clearMarkdownDiv();
+
+    this.updateMarkdownDiv(divisionMarkdownNode, context);
   }
 
   didMount() {
@@ -63,6 +70,12 @@ class View extends Element {
 
     this.setContent(content);
   }
+
+  static tagName = "div";
+
+  static defaultProperties = {
+    className: "view"
+  };
 
   static initialContent = `
 ### JavaScript
@@ -133,12 +146,6 @@ export default withStyle(simpleApplication)\`
 </book>
 '''
 `;
-
-  static tagName = "div";
-
-  static defaultProperties = {
-    className: "view"
-  };
 }
 
 export default withStyle(View)`
