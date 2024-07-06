@@ -93,49 +93,22 @@ const content = `
 Then it is just a question of mounting the node:
 
 ```
-import { Element } from "easy";
-import { markdownUtilities } from "highmark-yapp";
+const body = document.querySelector("body"),
+      domElement = body,  ///
+      parentDOMElement = domElement,  ///
+      siblingDOMElement = null,
+      context = {
+        tokens
+      };
 
-const { nodeFromContent } = markdownUtilities;
-
-class Article extends Element {
-  didMount() {
-    const { content } = this.constructor,
-          tokens = tokensFromContent(node),
-          node = nodeFromTokens(tokens);
-          domElement = this.getDOMElement(),
-          parentDOMElement = domElement,  ///
-          siblingDOMElement = null;
-
-    node.mount(parentDOMElement, siblingDOMElement, context);
-  }
-
-  willUnmount() {
-    ///
-  }
-
-  static tagName = "article";
-}
+node.mount(parentDOMElement, siblingDOMElement, context);
 ```
 
-Here the `didMount()` method assumes that some content is defined by way of the static `content` property.
-One way to do this would be to extend the `Article` class thus:
+Note the use of the tokens in a `context` plain old JavaScript object that must be padded to the node's `mount()` method along with the parent and sibling DOM elements.
+This is why there are two utility functions to create the node in two stages.
+By the way, the sibling DOM element, if not null, must be a child of the parent DOM element, in which case the node will be mounted immediately *before* it.
 
-```
-import Article from "../article";
-
-export default class ArchitectureArticle extends Article {
-  static title = "Architecture";
-
-  static content = `
-  
-    ...
-    
-  `;
-}  
-```
-
-Note that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
+Note also that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
 This generally makes things easier when working inside string template literals that use backticks for delimiters of course.
 
 ## Building
