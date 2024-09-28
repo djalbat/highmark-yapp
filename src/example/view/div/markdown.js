@@ -18,11 +18,16 @@ class MarkdownDiv extends Element {
     }
   }
 
-  update(divisionMarkdownNode, context) {
+  update(node, tokens) {
+    const divisionMarkdownNode = node;  ///
+
     if (divisionMarkdownNode !== null) {
       const domElement = this.getDOMElement(),
             parentDOMElement = domElement,  ///
-            siblingDOMElement = null;
+            siblingDOMElement = null,
+            context = {
+              tokens
+            };
 
       divisionMarkdownNode.mount(parentDOMElement, siblingDOMElement, context);
 

@@ -109,7 +109,7 @@ This is why there are two utility functions to create the node in two stages.
 By the way, the sibling DOM element, if not null, must be a child of the parent DOM element, in which case the node will be mounted immediately *before* it.
 
 Note also that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
-This generally makes things easier when working inside string template literals that use backticks for delimiters of course.
+This generally makes things easier when working inside string template literals that use backticks for delimiters.
 
 ## Building
 

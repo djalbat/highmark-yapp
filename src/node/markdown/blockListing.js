@@ -49,7 +49,13 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   mount(parentDOMElement, siblingDOMElement, context) {
-    super.mount(parentDOMElement, siblingDOMElement, context);
+    let domElement;
+
+    domElement = this.createDOMElement(context);
+
+    this.setDOMElement(domElement);
+
+    parentDOMElement.insertBefore(domElement, siblingDOMElement)
 
     const blockListing = this.getBlockListing();
 
@@ -57,11 +63,19 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   unmount(parentDOMElement, context) {
+    let domElement;
+
     const blockListing = this.getBlockListing();
 
     blockListing.willUnmount();
 
-    super.unmount(parentDOMElement, context);
+    domElement = this.getDOMElement();
+
+    parentDOMElement.removeChild(domElement);
+
+    domElement = null;
+
+    this.setDOMElement(domElement);
   }
 
   createDOMElement(context) {

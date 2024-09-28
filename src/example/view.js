@@ -22,15 +22,11 @@ class View extends Element {
   update() {
     const content = this.getContent(),
           tokens = tokensFromContent(content),
-          node = nodeFromTokens(tokens),
-          context = {
-            tokens
-          },
-          divisionMarkdownNode = node;  ///
+          node = nodeFromTokens(tokens);
 
     this.clearMarkdownDiv();
 
-    this.updateMarkdownDiv(divisionMarkdownNode, context);
+    this.updateMarkdownDiv(node, tokens);
   }
 
   didMount() {
@@ -77,7 +73,13 @@ class View extends Element {
     className: "view"
   };
 
-  static initialContent = `
+  static initialContent = `'''json
+{  
+}
+'''
+`;
+
+  static _initialContent = `
 ### JavaScript
   
 '''javascript
