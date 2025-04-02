@@ -4,6 +4,7 @@ import Yapp from "yapp";
 
 export default class BlockListing extends Yapp {
   static defaultProperties = {
+    editable: false,
     firaCode: true,
     hiddenGutter: true,
     hiddenScrollbars: true
