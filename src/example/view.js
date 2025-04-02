@@ -27,6 +27,8 @@ class View extends Element {
     this.clearMarkdownDiv();
 
     this.updateMarkdownDiv(node, tokens);
+
+    this.focusContentTextarea();
   }
 
   didMount() {

@@ -21,12 +21,11 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   content(context) {
     let content = EMPTY_STRING;
 
-    const childNodes = this.getChildNodes(),
-          childNodesLength = childNodes.length,
+    const multiplicity = this.getMultiplicity(),
           firstIndex = 0,
-          lastIndex = childNodesLength - 1;
+          lastIndex = multiplicity - 1;
 
-    childNodes.forEach((childNode, index) => {
+    this.forEachChildNode((childNode, index) => {
       if ((index !== firstIndex) && (index !== lastIndex)) {
         const childNodeContent = childNode.content(context);
 
@@ -40,10 +39,18 @@ export default class BlockListingMarkdownNode extends MarkdownNode {
   }
 
   className(context) {
-    const childNodes = this.getChildNodes(),
-          firstChildNode = first(childNodes),
-          blockListingStartMarkdownNode = firstChildNode,
-          className = blockListingStartMarkdownNode.className(context);
+    let className;
+
+    this.someChildNode((childNode, index) => {
+      if (index === 0) {
+        const firstChildNode = childNode, ///
+              blockListingStartMarkdownNode = firstChildNode;
+
+        className = blockListingStartMarkdownNode.className(context);
+
+        return true;
+      }
+    });
 
     return className;
   }

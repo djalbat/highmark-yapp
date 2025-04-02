@@ -34,11 +34,13 @@ class ContentTextarea extends Textarea {
 
   parentContext() {
     const getContent = this.getContent.bind(this),
-          setContent = this.setContent.bind(this);
+          setContent = this.setContent.bind(this),
+          focusContentTextarea = this.focus.bind(this);
 
     return ({
       getContent,
-      setContent
+      setContent,
+      focusContentTextarea
     });
   }
 
