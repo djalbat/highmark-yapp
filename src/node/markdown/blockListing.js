@@ -1,13 +1,10 @@
 "use strict";
 
 import { MarkdownNode } from "highmark-markdown";
-import { arrayUtilities } from "necessary";
 
 import BlockListing from "../../blockListing";
 
 import { EMPTY_STRING } from "../../constants";
-
-const { first } = arrayUtilities;
 
 export default class BlockListingMarkdownNode extends MarkdownNode {
   getBlockListing() {

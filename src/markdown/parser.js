@@ -1,13 +1,13 @@
 "use strict";
 
-import { nodeMap as nodeMapBase, ruleNames, MarkdownParser as MarkdownParserBase } from "highmark-markdown";
+import { markdownNodeMap as nodeMapBase, MarkdownParser as MarkdownParserBase, markdownRuleNames } from "highmark-markdown";
 
 import BlockListingMarkdownNode from "../node/markdown/blockListing";
 
-const { BLOCK_LISTING_RULE_NAME } = ruleNames;
+const { BLOCK_LISTING_MARKDOWN_RULE_NAME } = markdownRuleNames;
 
 const nodeMap = Object.assign({}, nodeMapBase, {
-  [BLOCK_LISTING_RULE_NAME]: BlockListingMarkdownNode
+  [BLOCK_LISTING_MARKDOWN_RULE_NAME]: BlockListingMarkdownNode
 });
 
 export default class MarkdownParser extends MarkdownParserBase {

@@ -3,61 +3,66 @@
 import withStyle from "easy-with-style";
 
 import { Element } from "easy";
+import { grammarUtilities } from "highmark-markdown";
+
+const { topmostHTMLNodeFromMarkdownNode } = grammarUtilities;
 
 class MarkdownDiv extends Element {
   clear() {
-    const divisionMarkdownNOde = this.getDivisionMarkdownNode();
+    const topmostHTMLNode = this.getTopmostHTMLNode();
 
-    if (divisionMarkdownNOde !== null) {
+    if (topmostHTMLNode !== null) {
       const domElement = this.getDOMElement(),
-            parentDOMElement = domElement;  ///
+            parentDOMElement = domElement,  ///
+            context = null;
 
-      divisionMarkdownNOde.unmount(parentDOMElement);
+      topmostHTMLNode.unmount(parentDOMElement, context);
 
-      this.clearDivisionMarkdownNode();
+      this.clearTopmostHTMLNode();
     }
   }
 
   update(node, tokens) {
-    const divisionMarkdownNode = node;  ///
+    const markdownNode = node;  ///
 
-    if (divisionMarkdownNode !== null) {
+    if (markdownNode !== null) {
       const domElement = this.getDOMElement(),
             parentDOMElement = domElement,  ///
             siblingDOMElement = null,
             context = {
               tokens
-            };
+            },
+            topmostHTMLNode = topmostHTMLNodeFromMarkdownNode(markdownNode);
 
-      divisionMarkdownNode.mount(parentDOMElement, siblingDOMElement, context);
+      topmostHTMLNode.mount(parentDOMElement, siblingDOMElement, context);
 
-      this.setDivisionMarkdownNode(divisionMarkdownNode);
+      this.setTopmostHTMLNode(topmostHTMLNode);
     }
   }
 
-  clearDivisionMarkdownNode() {
-    const divisionMarkdownNode = null;
+  clearTopmostHTMLNode() {
+    const topmostHTMLNode = null;
 
-    this.setDivisionMarkdownNode(divisionMarkdownNode);
+    this.setTopmostHTMLNode(topmostHTMLNode);
   }
 
-  getDivisionMarkdownNode() {
-    const { divisionMarkdownNode } = this.getState();
+  getTopmostHTMLNode() {
+    const { topmostHTMLNode } = this.getState();
 
-    return divisionMarkdownNode;
+    return topmostHTMLNode;
   }
 
-  setDivisionMarkdownNode(divisionMarkdownNode) {
+  setTopmostHTMLNode(topmostHTMLNode) {
     this.updateState({
-      divisionMarkdownNode
+      topmostHTMLNode
     });
   }
 
   setInitialState() {
-    const divisionMarkdownNode = null;
+    const topmostHTMLNode = null;
 
     this.setState({
-      divisionMarkdownNode
+      topmostHTMLNode
     });
   }
 
