@@ -3,7 +3,7 @@
 import withStyle from "easy-with-style";
 
 import { Element } from "easy";
-import { grammarUtilities } from "highmark-markdown";
+import { grammarUtilities } from "../../../index";  ///
 
 const { topmostHTMLNodeFromMarkdownNode } = grammarUtilities;
 
@@ -22,22 +22,22 @@ class MarkdownDiv extends Element {
     }
   }
 
-  update(node, tokens) {
-    const markdownNode = node;  ///
-
-    if (markdownNode !== null) {
-      const domElement = this.getDOMElement(),
-            parentDOMElement = domElement,  ///
-            siblingDOMElement = null,
-            context = {
-              tokens
-            },
-            topmostHTMLNode = topmostHTMLNodeFromMarkdownNode(markdownNode);
-
-      topmostHTMLNode.mount(parentDOMElement, siblingDOMElement, context);
-
-      this.setTopmostHTMLNode(topmostHTMLNode);
+  update(markdownNode, tokens) {
+    if (markdownNode === null) {
+      return;
     }
+
+    const domElement = this.getDOMElement(),
+          parentDOMElement = domElement,  ///
+          siblingDOMElement = null,
+          context = {
+            tokens
+          },
+          topmostHTMLNode = topmostHTMLNodeFromMarkdownNode(markdownNode);
+
+    topmostHTMLNode.mount(parentDOMElement, siblingDOMElement, context);
+
+    this.setTopmostHTMLNode(topmostHTMLNode);
   }
 
   clearTopmostHTMLNode() {

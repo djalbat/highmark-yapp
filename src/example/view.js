@@ -3,7 +3,7 @@
 import withStyle from "easy-with-style";  ///
 
 import { Element } from "easy";
-import { markdownUtilities } from "../index"; ///
+import { grammarUtilities } from "../index"; ///
 import { RowsDiv, ColumnsDiv, VerticalSplitterDiv } from "easy-layout";
 
 import ColumnDiv from "./view/div/column";
@@ -12,7 +12,7 @@ import SizeableDiv from "./view/div/sizeable";
 import MarkdownDiv from "./view/div/markdown";
 import ContentTextarea from "./view/textarea/content";
 
-const { tokensFromContent, nodeFromTokens } = markdownUtilities;
+const { tokensFromMarkdown, markdownNodeFromTokens } = grammarUtilities;
 
 class View extends Element {
   keyUpHandler = (event, element) => {
@@ -21,12 +21,13 @@ class View extends Element {
 
   update() {
     const content = this.getContent(),
-          tokens = tokensFromContent(content),
-          node = nodeFromTokens(tokens);
+          markdown = content, ///
+          tokens = tokensFromMarkdown(markdown),
+          markdownNode = markdownNodeFromTokens(tokens);
 
     this.clearMarkdownDiv();
 
-    this.updateMarkdownDiv(node, tokens);
+    this.updateMarkdownDiv(markdownNode, tokens);
 
     this.focusContentTextarea();
   }
@@ -75,10 +76,11 @@ class View extends Element {
     className: "view"
   };
 
-  static initialContent = `'''json
-{  
+  static initialContent = `\`\`\`json
+{
+  "foo": "bah"
 }
-'''
+\`\`\`
 `;
 
   static _initialContent = `
