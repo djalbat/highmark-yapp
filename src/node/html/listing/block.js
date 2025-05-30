@@ -1,65 +1,57 @@
 "use strict";
 
-import { HTMLNode } from "highmark-markdown";
+import { BlockListingHTMLNode as BlockListingHTMLNodeBase } from "highmark-markdown";
 
 import BlockListing from "../../../blockListing";
 
-import { EMPTY_STRING } from "../../../constants";
+export default class BlockListingHTMLNode extends BlockListingHTMLNodeBase {
+  constructor(outerNode, parentNode, childNodes, domElement, blockListing) {
+    super(outerNode, parentNode, childNodes, domElement);
 
-export default class BlockListingHTMLNode extends HTMLNode {
+    this.blockListing = blockListing;
+  }
+
   getBlockListing() {
-    const domElement = this.getDOMElement(),
-          { __element__ } = domElement, ///
-          blockListing = __element__; ///
-
-    return blockListing;
+    return this.blockListing;
   }
 
-  content(context) {
-    let content = EMPTY_STRING;
+  mount(parentDOMElement, siblingDOMElement, context) {
+    this.blockListing = this.createBlockListing(context);
 
-    const multiplicity = this.getMultiplicity(),
-          firstIndex = 0,
-          lastIndex = multiplicity - 1;
+    siblingDOMElement = this.blockListing.mount(parentDOMElement, siblingDOMElement, context);
 
-    this.forEachChildNode((childNode, index) => {
-      if ((index !== firstIndex) && (index !== lastIndex)) {
-        const childNodeContent = childNode.content(context);
-
-        content = `${content}${childNodeContent}`;
-      }
-    });
-
-    content = content.replace(/\n$/, EMPTY_STRING);
-
-    return content;
+    return siblingDOMElement;
   }
 
-  className(context) {
-    const className = this.fromFirstChildNode((firstChildNode) => {
-      const blockListingStartHTMLNode = firstChildNode, ///
-            className = blockListingStartHTMLNode.className(context);
+  unmount(parentDOMElement, context) {
+    this.blockListing.unmount(parentDOMElement, context);
 
-      return className;
-    });
-
-    return className;
+    this.blockListing = null;
   }
 
-  createDOMElement(context) {
+  createBlockListing(context) {
     const content = this.content(context),
           className = this.className(context),
           language = className, ///
           configuration ={
             language
           },
-          blockListing = BlockListing.fromContentAndConfiguration(content, configuration),
-          domElement = blockListing.getDOMElement();
+          blockListing = BlockListing.fromContentAndConfiguration(content, configuration);
 
-    return domElement;
+    return blockListing;
   }
 
-  static fromNothing() { return HTMLNode.fromNothing(BlockListingHTMLNode); }
+  static fromNothing() {
+    const blockListing = null,
+          blockListingHTMLNode = BlockListingHTMLNodeBase.fromNothing(BlockListingHTMLNode, blockListing);
 
-  static fromOuterNode(outerNode) { return HTMLNode.fromOuterNode(BlockListingHTMLNode, outerNode); }
+    return blockListingHTMLNode;
+  }
+
+  static fromOuterNode(outerNode) {
+    const blockListing = null,
+          blockListingHTMLNode = BlockListingHTMLNodeBase.fromOuterNode(BlockListingHTMLNode, outerNode, blockListing);
+
+    return blockListingHTMLNode;
+  }
 }
