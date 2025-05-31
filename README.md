@@ -73,20 +73,21 @@ renderYappStyles();
 ...
 ```
 
-Next, to create a node from some Markdown content, use the `tokensFromContent()` and `nodeFromTokens()` utility functions:
+Next, to create a node from some Markdown content, use the `tokensFromMarkdown()`, `markdownNodeFromTokens()` and `topmostHTMLNodeFromMarkdownNode()` utility functions:
 
 ```
 import { markdownUtilities } from "highmark-yapp";
 
-const { tokensFromContent, nodeFromTokens } = markdownUtilities;
+const { tokensFromMarkdown, markdownNodeFromTokens } = markdownUtilities;
 
-const content = `
+const markdown = `
 
         ...
         
       `,
-      tokens = tokensFromContent(node),
-      node = nodeFromTokens(tokens);
+      tokens = tokensFromMarkdown(markdown),
+      markdownNode = markdownNodeFromTokens(tokens),
+      topmostHTMLNode = topmostHTMLNodeFromMarkdownNode(markdownNode);
 
 ```
 
@@ -101,15 +102,12 @@ const body = document.querySelector("body"),
         tokens
       };
 
-node.mount(parentDOMElement, siblingDOMElement, context);
+topmostHTMLNode.mount(parentDOMElement, siblingDOMElement, context);
 ```
 
-Note the use of the tokens in a `context` plain old JavaScript object that must be padded to the node's `mount()` method along with the parent and sibling DOM elements.
+Note the use of the tokens in a `context` plain old JavaScript object that must be passed to the topmost HTML node's `mount()` method along with the parent and sibling DOM elements.
 This is why there are two utility functions to create the node in two stages.
-By the way, the sibling DOM element, if not null, must be a child of the parent DOM element, in which case the node will be mounted immediately *before* it.
-
-Note also that the usual delimiters for block listings consisting of three backticks have been replaced with three single quotes `'''`. 
-This generally makes things easier when working inside string template literals that use backticks for delimiters.
+By the way, the sibling DOM element, if not null, must be a child of the parent DOM element, in which case the node will be mounted immediately after it.
 
 ## Building
 
