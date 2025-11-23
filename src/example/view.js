@@ -12,7 +12,7 @@ import SizeableDiv from "./view/div/sizeable";
 import MarkdownDiv from "./view/div/markdown";
 import ContentTextarea from "./view/textarea/content";
 
-const { tokensFromMarkdown, markdownNodeFromTokens } = grammarUtilities;
+const { tokensFromMarkdown, documentMarkdownNodeFromTokens } = grammarUtilities;
 
 class View extends Element {
   keyUpHandler = (event, element) => {
@@ -23,11 +23,11 @@ class View extends Element {
     const content = this.getContent(),
           markdown = content, ///
           tokens = tokensFromMarkdown(markdown),
-          markdownNode = markdownNodeFromTokens(tokens);
+          documentMarkdownNode = documentMarkdownNodeFromTokens(tokens);
 
     this.clearMarkdownDiv();
 
-    this.updateMarkdownDiv(markdownNode, tokens);
+    this.updateMarkdownDiv(documentMarkdownNode, tokens);
 
     this.focusContentTextarea();
   }

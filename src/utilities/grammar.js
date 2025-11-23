@@ -5,8 +5,8 @@ import { HTMLNode, TopmostHTMLNode, grammarUtilities } from "highmark-markdown";
 import htmlNodeMap from "../map/node/html";
 
 const { tokensFromMarkdown,
-        markdownNodeFromTokens,
-        topmostHTMLNodeFromMarkdownNode: topmostHTMLNodeFromMarkdownNodeBase } = grammarUtilities;
+        documentMarkdownNodeFromTokens,
+        topmostHTMLNodeFromDocumentMarkdownNode: topmostHTMLNodeFromDocumentMarkdownNodeBase } = grammarUtilities;
 
 export function HTMLClassFromMarkdownNode(markdownNode) {
   let Class;
@@ -23,16 +23,16 @@ export function HTMLClassFromMarkdownNode(markdownNode) {
   return Class;
 }
 
-export function topmostHTMLNodeFromMarkdownNode(markdownNode) {
+export function topmostHTMLNodeFromDocumentMarkdownNode(markdownNode) {
   const ClassFromOuterNode = HTMLClassFromMarkdownNode, ///
-        topmostHTMLNode = topmostHTMLNodeFromMarkdownNodeBase(markdownNode, ClassFromOuterNode);
+        topmostHTMLNode = topmostHTMLNodeFromDocumentMarkdownNodeBase(markdownNode, ClassFromOuterNode);
 
   return topmostHTMLNode;
 }
 
 export default {
   tokensFromMarkdown,
-  markdownNodeFromTokens,
+  documentMarkdownNodeFromTokens,
   HTMLClassFromMarkdownNode,
-  topmostHTMLNodeFromMarkdownNode
+  topmostHTMLNodeFromDocumentMarkdownNode
 };

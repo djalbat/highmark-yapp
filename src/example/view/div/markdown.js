@@ -5,7 +5,7 @@ import withStyle from "easy-with-style";
 import { Element } from "easy";
 import { grammarUtilities } from "../../../index";  ///
 
-const { topmostHTMLNodeFromMarkdownNode } = grammarUtilities;
+const { topmostHTMLNodeFromDocumentMarkdownNode } = grammarUtilities;
 
 class MarkdownDiv extends Element {
   clear() {
@@ -22,8 +22,8 @@ class MarkdownDiv extends Element {
     }
   }
 
-  update(markdownNode, tokens) {
-    if (markdownNode === null) {
+  update(documentMarkdownNode, tokens) {
+    if (documentMarkdownNode === null) {
       return;
     }
 
@@ -33,7 +33,7 @@ class MarkdownDiv extends Element {
           context = {
             tokens
           },
-          topmostHTMLNode = topmostHTMLNodeFromMarkdownNode(markdownNode);
+          topmostHTMLNode = topmostHTMLNodeFromDocumentMarkdownNode(documentMarkdownNode);
 
     topmostHTMLNode.mount(parentDOMElement, siblingDOMElement, context);
 
