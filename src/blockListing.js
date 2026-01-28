@@ -3,8 +3,10 @@
 import Yapp from "yapp";
 
 import { domUtilities } from "highmark-markdown";
+import { elementUtilities } from "easy";
 
-const { remove, insertAfter, insertBeforehand } = domUtilities;
+const { mountElement, unmountElement } = elementUtilities,
+      { remove, insertAfter, insertBeforehand } = domUtilities;
 
 export default class BlockListing extends Yapp {
   mount(parentDOMElement, siblingDOMElement, context) {
@@ -14,7 +16,9 @@ export default class BlockListing extends Yapp {
       insertAfter(domElement, parentDOMElement, siblingDOMElement) :
         insertBeforehand(domElement, parentDOMElement);
 
-    this.didMount();
+    const element = this; ///
+
+    mountElement(element);
 
     siblingDOMElement = domElement;  ///
 
@@ -22,6 +26,10 @@ export default class BlockListing extends Yapp {
   }
 
   unmount(parentDOMElement, context) {
+    const element = this; ///
+
+    unmountElement(element);
+
     const domElement = this.getDOMElement();
 
     remove(domElement, parentDOMElement);
