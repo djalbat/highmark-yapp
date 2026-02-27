@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+node_modules
+npm-debug.log
+package-lock.json
+
+.git
+.swcrc
+.gitignore
+lib
+license.txt
+example.js
