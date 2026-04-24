@@ -4,13 +4,7 @@ import withStyle from "easy-with-style";  ///
 
 import Textarea from "../textarea";
 
-let count = 0;
-
 class ContentTextarea extends Textarea {
-  blurHandler = (event, element) => {
-    console.log(blur, count++)
-  }
-
   getContent() {
     const value = this.getValue(),
           content = value; ///
@@ -22,14 +16,6 @@ class ContentTextarea extends Textarea {
     const value = content;
 
     this.setValue(value);
-  }
-
-  didMount() {
-    this.onBlur(this.blurHandler);
-  }
-
-  willUnmount() {
-    this.offBlur(this.blurHandler);
   }
 
   parentContext() {
