@@ -31,8 +31,9 @@ export default class BlockListingHTMLNode extends BlockListingHTMLNodeBase {
 
   createBlockListing(context) {
     const content = this.content(context),
-          className = this.className(context),
-          language = className, ///
+          markdownNode = this.getMarkdownNode(),
+          languageName = markdownNode.languageName(context),
+          language = languageName, ///
           configuration ={
             language
           },
