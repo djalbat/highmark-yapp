@@ -76,9 +76,9 @@ renderYappStyles();
 Next, to create a node from some Markdown content, use the `tokensFromMarkdown()`, `markdownNodeFromTokens()` and `topmostHTMLNodeFromMarkdownNode()` utility functions:
 
 ```
-import { markdownUtilities } from "highmark-yapp";
+import { grammarUtilities } from "highmark-yapp";
 
-const { tokensFromMarkdown, markdownNodeFromTokens } = markdownUtilities;
+const { tokensFromMarkdown, markdownNodeFromTokens } = grammarUtilities;
 
 const markdown = `
 
