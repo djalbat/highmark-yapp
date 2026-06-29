@@ -53,13 +53,16 @@ The example will then be available at the following URL:
 
 http://localhost:8888
 
-The source for the example can be found in the `src/example.js` file and corresponding`src/example` folder. You are encouraged to try the example whilst reading what follows. You can rebuild it on the fly with the following command:
+The source for the example can be found in the `src/example.js` file and corresponding`src/example` folder. 
+You are encouraged to try the example whilst reading what follows. 
+You can rebuild it on the fly with the following command:
 
     npm run watch-debug
 
 The development server will reload the page whenever you make changes.
 
-One last thing to bear in mind is that this package is included by way of a relative rather than a package import. If you are importing it into your own application, however, you should use the standard package import.
+One last thing to bear in mind is that this package is included by way of a relative rather than a package import. 
+If you are importing it into your own application, however, then you should use the standard package import.
 
 ## Usage
 

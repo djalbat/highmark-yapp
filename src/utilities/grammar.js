@@ -23,16 +23,16 @@ export function HTMLClassFromMarkdownNode(markdownNode) {
   return Class;
 }
 
-export function topmostHTMLNodeFromDocumentMarkdownNode(markdownNode) {
+export function topmostHTMLNodeFromDocumentMarkdownNode(documentMarkdownNode) {
   const ClassFromOuterNode = HTMLClassFromMarkdownNode, ///
-        topmostHTMLNode = topmostHTMLNodeFromDocumentMarkdownNodeBase(markdownNode, ClassFromOuterNode);
+        topmostHTMLNode = topmostHTMLNodeFromDocumentMarkdownNodeBase(documentMarkdownNode, ClassFromOuterNode);
 
   return topmostHTMLNode;
 }
 
 export default {
   tokensFromMarkdown,
-  documentMarkdownNodeFromTokens,
   HTMLClassFromMarkdownNode,
+  documentMarkdownNodeFromTokens,
   topmostHTMLNodeFromDocumentMarkdownNode
 };
